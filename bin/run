@@ -34,7 +34,7 @@ push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
 
 proto tcp-server
-port 443
+port 53
 dev tun443
 status openvpn-status-443.log
 EOF
@@ -54,7 +54,7 @@ push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
 
 proto udp
-port 1194
+port 53
 dev tun1194
 status openvpn-status-1194.log
 EOF
@@ -86,11 +86,11 @@ redirect-gateway def1
 </dh>
 
 <connection>
-remote $MY_IP_ADDR 1194 udp
+remote $MY_IP_ADDR 53 udp
 </connection>
 
 <connection>
-remote $MY_IP_ADDR 443 tcp-client
+remote $MY_IP_ADDR to 53 tcp-client
 </connection>
 EOF
 
